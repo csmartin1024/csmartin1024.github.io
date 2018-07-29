@@ -45,47 +45,34 @@ jobs:
           root: .
           paths:
             - build
-  # deploy:
-  #   <<: *defaults
-  #   steps:
-  #     - checkout
-  #     - attach_workspace:
-  #         at: .
-  #     - run:
-  #         command: |
-  #           git config credential.helper 'cache --timeout=120'
-  #           git config user.email "csmartin1024@gmail.com"
-  #           git config user.name "Deployment Bot"
-  #           # git init
-  #           CI=true npm run deploy
   deploy:
-      <<: *defaults
-      steps:
-        - checkout
-        - attach_workspace:
-            at: .
-        - run: 
-            command: |
-                git config --global user.email $GH_EMAIL
-                git config --global user.name $GH_NAME
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          command: |
+            git config --global user.email $GH_EMAIL
+            git config --global user.name $GH_NAME
 
-                git clone $CIRCLE_REPOSITORY_URL out
+            git clone $CIRCLE_REPOSITORY_URL out
 
-                cd out
-                git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
-                git rm -rf .
-                cd ..
+            cd out
+            git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
+            git rm -rf .
+            cd ..
 
-                npm run build
+            npm run build
 
-                cp -a build/. out/.
+            cp -a build/. out/.
 
-                mkdir -p out/.circleci && cp -a .circleci/. out/.circleci/.
-                cd out
+            mkdir -p out/.circleci && cp -a .circleci/. out/.circleci/.
+            cd out
 
-                git add -A
-                git commit -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
-                git push origin $TARGET_BRANCH
+            git add -A
+            git commit -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+            git push origin $TARGET_BRANCH
 workflows:
   version: 2
   build_test_deploy:
