@@ -51,7 +51,7 @@ jobs:
             git config credential.helper 'cache --timeout=120'
             git config user.email "csmartin1024@gmail.com"
             git config user.name "Deployment Bot"
-            git init
+            # git init
             CI=true npm run deploy
 workflows:
   version: 2
