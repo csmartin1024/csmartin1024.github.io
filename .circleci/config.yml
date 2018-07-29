@@ -52,24 +52,7 @@ jobs:
             echo "sup"
             git config --global user.email csmartin1024@gmail.com
             git config --global user.name Circle SeeEye
-
-            git clone $CIRCLE_REPOSITORY_URL out
-
-            cd out
-            git checkout master || git checkout --orphan master
-            git rm -rf .
-            cd ..
-
-            npm run build
-
-            cp -a build/. out/.
-
-            mkdir -p out/.circleci && cp -a .circleci/. out/.circleci/.
-            cd out
-
-            git add -A
-            git commit -m "Automated deployment to GitHub Pages ${CIRCLE_SHA1}" --allow-empty
-            git push origin source
+            gh-pages -b master -d build
 workflows:
   version: 2
   build_test_deploy:
