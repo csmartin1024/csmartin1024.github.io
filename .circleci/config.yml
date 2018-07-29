@@ -52,7 +52,8 @@ jobs:
             echo "sup"
             git config --global user.email csmartin1024@gmail.com
             git config --global user.name Circle SeeEye
-            gh-pages -b master -d build
+            # gh-pages -b master -d build
+            npm run deploy
 workflows:
   version: 2
   build_test_deploy:
