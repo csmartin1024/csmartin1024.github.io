@@ -58,7 +58,7 @@ class App extends Component
           <h1 className="App-title">Welcome to Cody's Site (being deployed via circle FINALLY)</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          To get started, edit <code>src/App.js</code> and save to reload
         </p>
         {this.render3()}
       </div>
