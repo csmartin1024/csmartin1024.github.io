@@ -7,7 +7,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b master -d build"
   },
   "dependencies": {
     "gh-pages": "^1.2.0",
@@ -25,5 +25,5 @@
   "bugs": {
     "url": "https://github.com/csmartin1024/csmartin1024.github.io/issues"
   },
-  "homepage": "https://github.com/csmartin1024/csmartin1024.github.io"
+  "homepage": "https://csmartin1024.github.io"
 }
