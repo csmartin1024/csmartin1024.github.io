@@ -1,3 +1,8 @@
+defaults: &defaults
+  working_directory: ./circleci
+  docker:
+    # - image: circleci/node:8
+    - image: circleci/node:10-stretch
 version: 2
 jobs:
   build:
@@ -86,4 +91,4 @@ jobs:
 #             - e2e
 #         filters:
 #           branches:
-#             only: source
+#            only: source
