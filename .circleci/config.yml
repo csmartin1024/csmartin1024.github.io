@@ -4,7 +4,7 @@ defaults: &defaults
     - image: circleci/node:10-stretch
 version: 2
 jobs:
-  prepare:
+  build:
     <<: *defaults
     steps:
       - checkout
@@ -22,84 +22,51 @@ jobs:
           root: .
           paths:
             - node_modules
-
-
-# defaults: &defaults
-#   working_directory: ./circleci
-#   docker:
-#     # - image: circleci/node:8
-#     - image: circleci/node:10-stretch
-# version: 2
-# jobs:
-#   prepare:
-#     <<: *defaults
-#     steps:
-#       - checkout
-#       # Download and cache dependencies
-#       - restore_cache:
-#           keys:
-#           - v1-dependencies-{{ checksum "package.json" }}
-#       - run: npm install
-#       - save_cache:
-#           paths:
-#             - node_modules
-#           key: v1-dependencies-{{ checksum "package.json" }}
-#       - persist_to_workspace:
-#           root: .
-#           paths:
-#             - node_modules
-#   build:
-#     <<: *defaults
-#     steps:
-#       - checkout
-#       - attach_workspace:
-#           at: .
-#       - run: CI=true npm run build
-#       - persist_to_workspace:
-#           root: .
-#           paths:
-#             - build
-#   e2e:
-#     <<: *defaults
-#     steps:
-#       - checkout
-#       - attach_workspace:
-#           at: .
-#       - run: CI=true npm run test
-#   # lint:
-#   #   <<: *defaults
-#   #   steps:
-#   #     - checkout
-#   #     - attach_workspace:
-#   #         at: .
-#   #     - run: npm run lint
-#   deploy:
-#     <<: *defaults
-#     steps:
-#       - checkout
-#       - attach_workspace:
-#           at: .
-#       - deploy:
-#           name: Deploy to GitHub Pages
-#           - run: CI=true npm run deploy
-# workflows:
-#   version: 2
-#   build_test_deploy:
-#     jobs:
-#       - prepare
-#       # - lint:
-#       #     requires:
-#       #       - prepare
-#       - build
-#           # requires:
-#           #   - lint
-#       - e2e:
-#           requires:
-#             - build
-#       - deploy:
-#         type: approval
-#           requires:
-#             - e2e
-#         filters:
-#           branches:
-#            only: source
+  react:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: CI=true npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: CI=true npm run test
+  deploy:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - deploy:
+          name: Deploy to GitHub Pages
+          - run: CI=true npm run deploy
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - prepare
+      # - lint:
+      #     requires:
+      #       - prepare
+      - build
+          # requires:
+          #   - lint
+      - e2e:
+          requires:
+            - build
+      - deploy:
+        type: approval
+          requires:
+            - e2e
+        filters:
+          branches:
+           only: source
