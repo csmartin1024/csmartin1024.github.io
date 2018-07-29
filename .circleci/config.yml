@@ -67,7 +67,6 @@ workflows:
       - deploy:
           requires:
             - hold
-        filters:
-          branches:
-            only:
-              - source
+          filters:
+            branches:
+              only: source                
