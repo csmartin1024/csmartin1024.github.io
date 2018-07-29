@@ -60,10 +60,13 @@ workflows:
       - react:
           requires:
             - test
-      # - deploy:
-      #   type: approval
-      #     requires:
-      #       - react
-      #   filters:
-      #     branches:
-      #     only: source
+      - hold:
+          type: approval
+          requires:
+            - react
+      - deploy:
+          requires:
+            - hold
+        filters:
+          branches:
+          only: source
