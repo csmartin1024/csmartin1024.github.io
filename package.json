@@ -6,7 +6,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -b master -d build"
+    "deploy": "gh-pages -b master -d build -m \"Automated deployment to GitHub Pages${CIRCLE_SHA1}\""
   },
   "dependencies": {
     "gh-pages": "^1.2.0",

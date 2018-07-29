@@ -49,10 +49,8 @@ jobs:
       - run:
           name: "Test the commit for org or team processes"
           command: |
-            echo "sup"
             git config --global user.email csmartin1024@gmail.com
             git config --global user.name Circle SeeEye
-            # gh-pages -b master -d build
             npm run deploy
 workflows:
   version: 2
