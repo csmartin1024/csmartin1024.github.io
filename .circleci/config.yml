@@ -29,17 +29,17 @@ jobs:
       - attach_workspace:
           at: .
       - run: CI=true npm run test
-#   react:
-#     <<: *defaults
-#     steps:
-#       - checkout
-#       - attach_workspace:
-#           at: .
-#       - run: CI=true npm run build
-#       - persist_to_workspace:
-#           root: .
-#           paths:
-#             - build
+  react:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: CI=true npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build
 #   deploy:
 #     <<: *defaults
 #     steps:
@@ -59,9 +59,9 @@ workflows:
       - test:
           requires:
             - build
-      # - react:
-      #     requires:
-      #       - test
+      - react:
+          requires:
+            - test
       # - deploy:
       #   type: approval
       #     requires:
