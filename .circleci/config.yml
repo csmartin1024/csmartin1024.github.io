@@ -69,4 +69,5 @@ workflows:
             - hold
         filters:
           branches:
-          only: source
+            only:
+              - source
