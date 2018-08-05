@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // import Body from '../components/Body';
 // import Header from '../components/Header';
 // import Footer from '../components/Footer';
-import MediaQuery from 'react-responsive';
+// import MediaQuery from 'react-responsive';
 import Responsive from 'react-responsive';
 
 import "typeface-open-sans";
@@ -201,7 +201,7 @@ class Layout extends Component
                     <div style={{display:'flex',flexDirection:'row', alignItems:'center', flex:8, backgroundColor:'#292929', padding:25, paddingBottom:50}}>
                       <div style={{flex:this.state.currentHeader === 'WHY'  ? 3 : 1, textAlign:'center'}}>
                         {this.state.currentHeader === 'WHO' && <div>
-                          <img style={{float:'left',borderRadius: '50%'}} src={require('../images/face.jpg')} />
+                          <img alt="facegoeshere" style={{float:'left',borderRadius: '50%'}} src={require('../images/face.jpg')} />
                           <span style={{fontSize:22, fontFamily:'Open Sans',borderTop:'solid', borderTopWidth:0, borderColor:'rgba(255,255,255,.5)', color:'white', lineHeight:4}}>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage,. This is </span></div>}
                         {this.state.currentHeader === 'WHAT' && <span style={{fontSize:22, fontFamily:'Open Sans',borderTop:'solid', borderTopWidth:0, borderColor:'rgba(255,255,255,.5)', color:'white', lineHeight:4}}>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of .</span>}
                         {this.state.currentHeader === 'WHY' && <span style={{fontSize:22, fontFamily:'Open Sans',borderTop:'solid', borderTopWidth:0, borderColor:'rgba(255,255,255,.5)', color:'white', lineHeight:4}}>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</span>}
