@@ -36,7 +36,11 @@
             <nav>
               <ul>
                 
+                  <li><a href="#about">Who</a></li>
+                
                   <li><a href="#projects">What</a></li>
+                
+                  <li><a href="#contact">How</a></li>
                 
               </ul>
             </nav>
@@ -44,6 +48,19 @@
 
         
           <div id="main">
+            
+              <article id="about">
+  <h1>Who Am I?</h1>
+  <p><figure class="image main">
+    <img src="/images/man-coding-sunset.jpg"/> 
+</figure>
+
+Well for starters, I&rsquo;m not this dummy sitting on the edge of his building with his computer dangling on his legs. You already know my name (see url?), but did you know that I&rsquo;ve worked at a company with 25 people and a company with 75,000? They both had their pros and cons by the way.  Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
+
+<p><span>Photo Courtesy : <a href="https://unsplash.com/@hnhmarketing?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Avi Richards">Avi Richards</a></span></p>
+
+</article>
+
             
               <article id="projects">
   <h1>What Have I Done?</h1>
@@ -56,6 +73,52 @@ Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend s
 <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
 
 <p><span>Photo Courtesy : <a href="https://unsplash.com/@avirichards?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Hunter Haley">Hunter Haley</a></span></p>
+
+</article>
+
+            
+              <article id="contact">
+  <h1>Contact Me</h1>
+  <p><form id="contactform" method="post" action="https://formspree.io/support@thecodingcody.com">
+    <div class="field half first">
+        <input type="text" name="name" id="name" placeholder="Name"/>
+    </div>
+    <div class="field half">
+        <input type="email" id="email" name="email" placeholder="Email">
+    </div>
+    <div class="field">
+        <textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
+    </div>
+    <ul class="actions">
+        <li><input type="submit" value="Send message" class="special" /></li>
+        <li><input type="reset" value="Reset" /></li>
+    </ul>
+    <input type="hidden" name="_next" value="?sent#formspree" />
+    <input type="hidden" name="_subject" value="Subject for your mail like new message" />
+    <input type="text" name="_gotcha" style="display:none" />
+</form>
+<span id="contactformsent">Thank you for your message</span></p>
+
+<script>
+$(document).ready(function($) { 
+    $(function(){
+        if (window.location.search == "?sent") {
+            $('#contactform').hide();
+            $('#contactformsent').show();
+        } else {
+            $('#contactformsent').hide();
+        }
+    });
+});
+</script>
+
+<ul class="icons">
+
+	<li><a href="https://www.linkedin.com/in/cody-scott-martin/" class="icon fa-linkedin"><span class="label">linkedin</span></a></li>
+
+	<li><a href="https://github.com/csmartin1024" class="icon fa-github"><span class="label">github</span></a></li>
+
+</ul>
 
 </article>
 
