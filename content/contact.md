@@ -2,7 +2,7 @@
 title = "Contact Me"
 weight = 3
 menuname = "How"
-draft = true
+draft = false
 +++
 
 <form id="contactform" method="post" action="https://formspree.io/support@thecodingcody.com">

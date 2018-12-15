@@ -2,7 +2,7 @@
 title = "Who Am I?"
 weight = 1
 menuname = "Who"
-draft = true
+draft = false
 +++
 
 {{< figure class="image main" src="/images/man-coding-sunset.jpg" >}}
