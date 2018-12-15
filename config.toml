@@ -1,0 +1,30 @@
+baseURL = "https://thecodingcody.com"
+languageCode = "en-us"
+title = "The Coding Cody"
+theme = "dimension"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+disableKinds=["RSS"]
+
+googleAnalytics = "UA-131075030-1"
+
+[params]
+  description = '<!--[-->My name is Cody. Welcome to my site. There are many like it, but this one is mine.<!--]--><br />
+                <!--[--> I am just a guy who creates things.<!--]-->'
+
+logo = "fa-code"
+
+[[params.social]]
+  medium = "linkedin"
+  icon = "linkedin"
+  link = "https://www.linkedin.com/in/cody-scott-martin/"
+
+[[params.social]]
+  medium = "github"
+  icon = "github"
+  link = "https://github.com/csmartin1024"
+
+[languages]
+[languages.en]
+languageName = "English"
+weight = 1

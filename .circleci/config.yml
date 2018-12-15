@@ -1,45 +1,35 @@
 defaults: &defaults
-  # working_directory: ./circleci
-  docker:
-    - image: circleci/node:10-stretch
+    docker:
+      - image: cibuilds/hugo:latest
+    working_directory: ~/hugo
+    environment:
+      HUGO_BUILD_DIR: ~/hugo/public
 version: 2
 jobs:
   build:
     <<: *defaults
     steps:
+      # install git
+      - run: apk update && apk add git
+
+      # checkout the repository
       - checkout
-      - run: echo "A first hello"
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-      - run: npm install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+
+      # install git submodules for managing third-party dependencies
+      - run: git submodule sync && git submodule update --init
+
+      # build with Hugo
+      - run: HUGO_ENV=production hugo -t dimension -v -d $HUGO_BUILD_DIR
+
+      # - run:
+      #     name: test our generated HTML files
+      #     command: |
+      #       htmlproofer $HUGO_BUILD_DIR --allow-hash-href --check-html \
+      #       --empty-alt-ignore --disable-external
       - persist_to_workspace:
           root: .
           paths:
-            - node_modules
-  test:
-    <<: *defaults
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run: CI=true npm run test
-  react:
-    <<: *defaults
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run: CI=true npm run build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - build
+            - public
   deploy:
     <<: *defaults
     steps:
@@ -57,18 +47,10 @@ workflows:
   build_test_deploy:
     jobs:
       - build
-          # requires:
-          #   - lint
-      - test:
-          requires:
-            - build
-      - react:
-          requires:
-            - test
       - hold:
           type: approval
           requires:
-            - react
+            - build
       - deploy:
           requires:
             - hold
