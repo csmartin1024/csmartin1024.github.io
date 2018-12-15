@@ -39,6 +39,7 @@ jobs:
       - run:
           name: "Test the commit for org or team processes"
           command: |
+            git clone
             git config --global user.email csmartin1024@gmail.com
             git config --global user.name Circle SeeEye
             git -b master --single-branch clone $CIRCLE_REPOSITORY_URL out
